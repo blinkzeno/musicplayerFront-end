@@ -1,13 +1,21 @@
-import Accueil from "./pages/home/Accueil"
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Connexion from './pages/auth/Connexion';
+import Accueil from './pages/home/Accueil';
+import Inscription from './pages/auth/Inscription';
 
 
-
-const App = () => {
+function App() {
   return (
-    <Accueil />
-  )
+    <Router>
+      <Routes>
+      <Route path="/" element={<Navigate to="/connexion" replace />} />
+        <Route path="/connexion" element={<Connexion />} />
+        <Route path="/inscription" element={<Inscription />} />
+        <Route path="/home" element={<Accueil />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
